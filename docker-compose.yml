@@ -1,0 +1,50 @@
+version: '2'
+services:
+  app:
+    image: "node:latest"
+    working_dir: /usr/src/app
+    command: ./run-dev.sh
+    volumes:
+     - ./app:/usr/src/app
+    environment: 
+      - port=3000
+    depends_on: 
+      - parse-server
+  app2:
+    image: "node:latest"
+    working_dir: /usr/src/app
+    command: ./run-dev.sh
+    volumes:
+     - ./app:/usr/src/app
+    environment: 
+      - port=3001
+    depends_on: 
+      - parse-server
+  mongo:
+    image: "mongo"
+ 
+  parse-server:
+    image: yongjhih/parse-server
+    # ports:
+    # - "1337:1337"
+    environment:
+      PORT: 1337
+      DATABASE_URI: "mongodb://mongo:27017/test"
+      APP_ID: "test"
+      MASTER_KEY: test_MASTER_KEY
+      JAVASCRIPT_KEY: test_JAVASCRIPT_KEY
+    links: 
+    - mongo
+    depends_on: 
+    - mongo
+  nginx:
+    image: nginx
+    ports:
+     - "5010:80"
+    volumes:
+     - ./proxy/conf.d:/etc/nginx/conf.d
+    links: 
+     - parse-server
+     - mongo
+     - app
+     - app2
