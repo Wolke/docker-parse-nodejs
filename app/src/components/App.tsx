@@ -39,7 +39,6 @@ export class App extends React.Component<{
         return (
             <div style={style}>
                 <a href="/" >home</a>
-                <a href="/test" >test</a>
             </div>
         )
     }

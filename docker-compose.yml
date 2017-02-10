@@ -10,16 +10,6 @@ services:
       - port=3000
     depends_on: 
       - parse-server
-  app2:
-    image: "node:latest"
-    working_dir: /usr/src/app
-    command: ./run-dev.sh
-    volumes:
-     - ./app:/usr/src/app
-    environment: 
-      - port=3001
-    depends_on: 
-      - parse-server
   mongo:
     image: "mongo"
     # ports:
@@ -51,4 +41,4 @@ services:
      - parse-server
      - mongo
      - app
-     - app2
+  

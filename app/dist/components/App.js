@@ -41,8 +41,7 @@ var App = (function (_super) {
             boxShadow: "0px 3px 3px 0px rgba(50, 50, 50, 0.5)"
         };
         return (React.createElement("div", { style: style },
-            React.createElement("a", { href: "/" }, "home"),
-            React.createElement("a", { href: "/test" }, "test")));
+            React.createElement("a", { href: "/" }, "home")));
     };
     return App;
 }(React.Component));
