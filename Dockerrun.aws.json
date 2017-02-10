@@ -1,0 +1,145 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "volumes": [
+    {
+      "name": "app",
+      "host": {
+        "sourcePath": "/var/app/current/app"
+      }
+    },
+    {
+      "name": "app2",
+      "host": {
+        "sourcePath": "/var/app/current/app"
+      }
+    },
+    {
+      "name": "nginx-proxy-conf",
+      "host": {
+        "sourcePath": "/var/app/current/proxy/conf.d"
+      }
+    },
+    {
+      "name": "mongo"
+    },
+    {
+      "name": "parse-server"
+    }
+  ],
+  "containerDefinitions": [
+    {
+      "name": "app",
+      "image": "node:latest",
+      "essential": true,
+      "memory": 256,
+      "command": [
+        "/bin/bash",
+        "/usr/src/app/run-dev.sh"
+      ],
+      "portMappings": [
+        {
+          "hostPort": 3000,
+          "containerPort": 3000
+        }
+      ],
+      "mountPoints": [
+        {
+          "sourceVolume": "app",
+          "containerPath": "/usr/src/app"
+        }
+      ]
+    },
+
+    {
+      "name": "app2",
+      "image": "node:latest",
+      "essential": true,
+      "memory": 128,
+      "command": [
+        "/bin/bash",
+        "/usr/src/app/run-dev.sh"
+      ],
+      "portMappings": [
+        {
+          "hostPort": 3001,
+          "containerPort": 3001
+        }
+      ],
+      "mountPoints": [
+        {
+          "sourceVolume": "app2",
+          "containerPath": "/usr/src/app"
+        }
+      ]
+    },
+    {
+      "name":"mongo",
+      "image":"mongo",
+      "essential": true,
+      "memory": 128,
+      "portMappings": [
+        {
+          "hostPort": 27017,
+          "containerPort": 27017
+        }
+      ]
+
+    },
+    {
+      "name": "parse-server",
+      "image": "yongjhih/parse-server",
+      "essential": true,
+      "memory": 128,
+      "command": [
+        "/bin/bash",
+        "/usr/src/app/run-dev.sh"
+      ],
+      "portMappings": [
+        {
+          "hostPort": 1337,
+          "containerPort": 1337
+        }
+      ],
+      "mountPoints": [
+        {
+          "sourceVolume": "app",
+          "containerPath": "/usr/src/app"
+        }
+      ],
+      "links": [
+        "mongo"
+      ]
+    },
+   
+    { 
+      "name": "nginx-proxy",
+      "image": "nginx",
+      "essential": true,
+      "memory": 128,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "links": [
+        "parse-server",
+        "mongo",
+        "app",
+        "app2"
+      ],
+      "mountPoints": [
+        {
+          "sourceVolume": "awseb-logs-nginx-proxy",
+          "containerPath": "/var/log/nginx"
+        },
+        {
+          "sourceVolume": "nginx-proxy-conf",
+          "containerPath": "/etc/nginx/conf.d",
+          "readOnly": true
+        }
+      ]
+    }
+
+  ]
+}
