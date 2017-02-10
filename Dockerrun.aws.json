@@ -81,6 +81,16 @@
       ],
       "links": [
         "mongo"
+      ],
+      "environment": [
+        {
+          "PORT": "1337",
+          "DATABASE_URI":"mongodb://mongo:27017/test",
+          "APP_ID":"test",
+          "MASTER_KEY":"test_MASTER_KEY",
+          "JAVASCRIPT_KEY":"test_JAVASCRIPT_KEY"
+
+        }
       ]
     },
    
