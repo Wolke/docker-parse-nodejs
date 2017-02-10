@@ -62,7 +62,7 @@
       "name": "parse-server",
       "image": "yongjhih/parse-server",
       "essential": true,
-      "memory": 512,
+      "memory": 374,
       "portMappings": [
         {
           "hostPort": 1337,
