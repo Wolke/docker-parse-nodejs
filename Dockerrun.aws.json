@@ -84,6 +84,7 @@
       ],
       "environment": [
         {
+          "name":"parse-server",
           "PORT": "1337",
           "DATABASE_URI":"mongodb://mongo:27017/test",
           "APP_ID":"test",
