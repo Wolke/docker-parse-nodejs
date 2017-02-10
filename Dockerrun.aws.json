@@ -7,12 +7,7 @@
         "sourcePath": "/var/app/current/app"
       }
     },
-    {
-      "name": "app2",
-      "host": {
-        "sourcePath": "/var/app/current/app"
-      }
-    },
+
     {
       "name": "nginx-proxy-conf",
       "host": {
@@ -51,28 +46,6 @@
     },
 
     {
-      "name": "app2",
-      "image": "node:latest",
-      "essential": true,
-      "memory": 128,
-      "command": [
-        "/bin/bash",
-        "/usr/src/app/run-dev.sh"
-      ],
-      "portMappings": [
-        {
-          "hostPort": 3001,
-          "containerPort": 3001
-        }
-      ],
-      "mountPoints": [
-        {
-          "sourceVolume": "app2",
-          "containerPath": "/usr/src/app"
-        }
-      ]
-    },
-    {
       "name":"mongo",
       "image":"mongo",
       "essential": true,
@@ -108,6 +81,16 @@
       ],
       "links": [
         "mongo"
+      ],
+      "environment": [
+        {
+          "PORT": "1337",
+          "DATABASE_URI":"mongodb://mongo:27017/test",
+          "APP_ID":"test",
+          "MASTER_KEY":"test_MASTER_KEY",
+          "JAVASCRIPT_KEY":"test_JAVASCRIPT_KEY"
+
+        }
       ]
     },
    
@@ -125,8 +108,7 @@
       "links": [
         "parse-server",
         "mongo",
-        "app",
-        "app2"
+        "app"
       ],
       "mountPoints": [
         {
