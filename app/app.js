@@ -3,8 +3,16 @@ const express = require("express");
 var app = express();
 var path = require("path")
 console.log(__dirname)
-app.get("/bundle.js", (req, rep) => {
-    fs.readFile(__dirname + "/dist/bundle.js", (err, data) => {
+app.get("/bundle3001.js", (req, rep) => {
+    fs.readFile(__dirname + "/dist/bundle3001.js", (err, data) => {
+        if (err) {
+            console.log(err);
+        }
+        rep.end(data);
+    })
+})
+app.get("/bundle3000.js", (req, rep) => {
+    fs.readFile(__dirname + "/dist/bundle3000.js", (err, data) => {
         if (err) {
             console.log(err);
         }
@@ -40,7 +48,7 @@ function renderFullPage() {
       <body>
         <h1>` + process.env.port + `</h1>
         <container id="content"></container>
-        <script src="/bundle.js"></script>
+        <script src="/bundle` + process.env.port + `.js"></script>
       </body>
     </html>
   `;
