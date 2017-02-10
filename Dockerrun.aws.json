@@ -26,7 +26,7 @@
       "name": "app",
       "image": "node:latest",
       "essential": true,
-      "memory": 128,
+      "memory": 256,
       "command": [
         "/bin/bash",
         "/usr/src/app/run-dev.sh"
@@ -62,11 +62,7 @@
       "name": "parse-server",
       "image": "yongjhih/parse-server",
       "essential": true,
-      "memory": 128,
-      "command": [
-        "/bin/bash",
-        "/usr/src/app/run-dev.sh"
-      ],
+      "memory": 256,
       "portMappings": [
         {
           "hostPort": 1337,
