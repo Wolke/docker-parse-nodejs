@@ -40,7 +40,7 @@ services:
   nginx:
     image: nginx
     ports:
-     - "5010:80"
+     - "80:80"
     volumes:
      - ./proxy/conf.d:/etc/nginx/conf.d
     links: 
