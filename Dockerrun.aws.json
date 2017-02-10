@@ -49,7 +49,7 @@
       "name":"mongo",
       "image":"mongo",
       "essential": true,
-      "memory": 128,
+      "memory": 64,
       "portMappings": [
         {
           "hostPort": 27017,
@@ -62,7 +62,7 @@
       "name": "parse-server",
       "image": "yongjhih/parse-server",
       "essential": true,
-      "memory": 374,
+      "memory": 512,
       "portMappings": [
         {
           "hostPort": 1337,
@@ -95,7 +95,7 @@
       "name": "nginx-proxy",
       "image": "nginx",
       "essential": true,
-      "memory": 128,
+      "memory": 64,
       "portMappings": [
         {
           "hostPort": 80,
