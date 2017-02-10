@@ -31,7 +31,7 @@
       "name": "app",
       "image": "node:latest",
       "essential": true,
-      "memory": 256,
+      "memory": 128,
       "command": [
         "/bin/bash",
         "/usr/src/app/run-dev.sh"

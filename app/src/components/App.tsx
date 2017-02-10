@@ -7,7 +7,7 @@ export class App extends React.Component<{
         console.log("go");
         Parse.initialize("test", "test_JAVASCRIPT_KEY");
 
-        (Parse as any).serverURL = "http://localhost:5010/parse";
+        (Parse as any).serverURL = "http://localhost:1337/parse";
 
         let user = Parse.User.current();
         console.log(user);
