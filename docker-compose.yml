@@ -14,8 +14,8 @@ services:
     image: "mongo"
     # ports:
     # - "27017:27017"
-    # volumes: 
-    # - ./db:/data/db
+    volumes: 
+    - ./db:/data/db
  
   parse-server:
     image: yongjhih/parse-server

@@ -31,12 +31,12 @@
         "/bin/bash",
         "/usr/src/app/run-dev.sh"
       ],
-      "portMappings": [
-        {
-          "hostPort": 3000,
-          "containerPort": 3000
-        }
-      ],
+      // "portMappings": [
+      //   {
+      //     "hostPort": 3000,
+      //     "containerPort": 3000
+      //   }
+      // ],
       "mountPoints": [
         {
           "sourceVolume": "app",
@@ -49,26 +49,26 @@
       "name":"mongo",
       "image":"mongo",
       "essential": true,
-      "memory": 64,
-      "portMappings": [
-        {
-          "hostPort": 27017,
-          "containerPort": 27017
-        }
-      ]
+      "memory": 64
+      // "portMappings": [
+      //   {
+      //     "hostPort": 27017,
+      //     "containerPort": 27017
+      //   }
+      // ]
 
     },
     {
       "name": "parse-server",
       "image": "yongjhih/parse-server",
       "essential": true,
-      "memory": 512,
-      "portMappings": [
-        {
-          "hostPort": 1337,
-          "containerPort": 1337
-        }
-      ],
+      "memory": 256,
+      // "portMappings": [
+      //   {
+      //     "hostPort": 1337,
+      //     "containerPort": 1337
+      //   }
+      // ],
       "mountPoints": [
         {
           "sourceVolume": "app",
