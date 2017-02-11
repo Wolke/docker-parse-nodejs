@@ -15,7 +15,11 @@
       }
     },
     {
-      "name": "mongo"
+      "name": "mongo",
+      "host": {
+        "sourcePath": "/data/db"
+      }
+
     },
     {
       "name": "parse-server"
@@ -44,7 +48,13 @@
       "name":"mongo",
       "image":"mongo",
       "essential": true,
-      "memory": 64
+      "memory": 64,
+      "mountPoints": [
+        {
+          "sourceVolume": "mongo",
+          "containerPath": "/db"
+        }
+      ]
       
     },
     {
