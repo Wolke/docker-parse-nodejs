@@ -80,14 +80,27 @@
       ],
       "environment": [
         {
-          "name":"parse-server",
-          "port": "1337",
-          "databaseUri":"mongodb://mongo:27017/test",
-          "appId":"test",
-          "masterKey":"test_MASTER_KEY",
-          "javascriptKey":"test_JAVASCRIPT_KEY"
-
+          "name":"PORT",
+          "value":"1337"
+        },
+        {
+          "name":"DATABASE_URI",
+          "value":"mongodb://mongo:27017/test"
+        },
+        {
+          "name":"APP_ID",
+          "value":"test"
+        },
+        {
+          "name":"MASTER_KEY",
+          "value":"test_MASTER_KEY"
+        },
+        {
+          "name":"JAVASCRIPT_KEY",
+          "value":"test_JAVASCRIPT_KEY"
         }
+
+       
       ]
     },
    
