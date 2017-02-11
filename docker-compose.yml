@@ -15,7 +15,7 @@ services:
     # ports:
     # - "27017:27017"
     volumes:
-      - ./db:/data/db
+      - ./db_local:/data/db
  
   parse-server:
     image: yongjhih/parse-server
