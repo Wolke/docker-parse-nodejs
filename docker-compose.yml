@@ -19,8 +19,8 @@ services:
  
   parse-server:
     image: yongjhih/parse-server
-    ports:
-    - "1337:1337"
+    # ports:
+    # - "1337:1337"
     environment:
       PORT: 1337
       DATABASE_URI: "mongodb://mongo:27017/test"

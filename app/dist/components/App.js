@@ -14,7 +14,7 @@ var App = (function (_super) {
     App.prototype.componentDidMount = function () {
         console.log("go");
         Parse.initialize("test", "test_JAVASCRIPT_KEY");
-        Parse.serverURL = "http://localhost:1337/parse";
+        Parse.serverURL = window.location.protocol + "//" + window.location.hostname + "/parse";
         var user = Parse.User.current();
         console.log(user);
         if (!user) {
