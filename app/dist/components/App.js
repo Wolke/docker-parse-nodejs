@@ -9,7 +9,7 @@ var Parse = require("parse");
 var App = (function (_super) {
     __extends(App, _super);
     function App() {
-        return _super.apply(this, arguments) || this;
+        return _super !== null && _super.apply(this, arguments) || this;
     }
     App.prototype.componentDidMount = function () {
         console.log("go");

@@ -3,7 +3,7 @@ const express = require("express");
 var app = express();
 var path = require("path")
 
-app.get("/bundle.js", (req, rep) => {
+app.get(["/bundle.js", "/app1bundle.js", "/app2bundle.js"], (req, rep) => {
     fs.readFile(__dirname + "/dist/bundle.js", (err, data) => {
         if (err) {
             console.log(err);
@@ -20,7 +20,7 @@ app.get("/bundle.js.map", (req, rep) => {
     })
 })
 
-app.get("/", (req, rep) => {
+app.get(["/", "/app1", "/app2"], (req, rep) => {
     rep.end(renderFullPage());
 });
 app.get("/test", (req, rep) => {
@@ -39,7 +39,7 @@ function renderFullPage() {
       </head>
       <body>
         <container id="content"></container>
-        <script src="/bundle.js"></script>
+        <script src="/` + process.env.name + `bundle.js"></script>
       </body>
     </html>
   `;
